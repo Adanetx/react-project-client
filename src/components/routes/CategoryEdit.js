@@ -4,6 +4,7 @@ import CategoryForm from '../shared/categoryForm'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
 import { withRouter } from 'react-router'
+import messages from '../AutoDismissAlert/messages'
 
 class CategoryEdit extends Component {
   constructor (props) {
@@ -17,8 +18,18 @@ class CategoryEdit extends Component {
       updated: false
     }
   }
+  // componentDidMount () {
+  //   axios(`${apiUrl}/categories/${this.props.match.params.id}`)
+  //     .then(res => this.setState({ category: res.data.category }))
+  //     .catch(console.error)
+  // }
   componentDidMount () {
-    axios(`${apiUrl}/categories/${this.props.match.params.id}`)
+    axios(`${apiUrl}/categories/${this.props.match.params.id}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${this.props.user.token}`
+      }
+    })
       .then(res => this.setState({ category: res.data.category }))
       .catch(console.error)
   }
@@ -44,8 +55,20 @@ class CategoryEdit extends Component {
       },
       data: { category: this.state.category }
     })
+    //     .then(res => this.setState({ updated: true }))
+    //     .catch(console.error)
+    // }
       .then(res => this.setState({ updated: true }))
-      .catch(console.error)
+      .then(res => this.props.msgAlert({
+        heading: 'category Edited Successfully',
+        message: messages.categoryEditedSuccess,
+        variant: 'success'
+      }))
+      .catch(res => this.props.msgAlert({
+        heading: 'category Edit Failed',
+        message: messages.categoryEditFailure,
+        variant: 'danger'
+      }))
   }
 
   render () {

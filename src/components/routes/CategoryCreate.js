@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import CategoryForm from '../shared/categoryForm'
+import messages from '../AutoDismissAlert/messages'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
 import { withRouter } from 'react-router'
+// import messages from '../AutoDismissAlert/messages'
 
 class CategoryCreate extends Component {
   constructor (props) {
@@ -39,8 +41,23 @@ class CategoryCreate extends Component {
       },
       data: { category: this.state.category }
     })
+    //     .then(res => this.setState({ createdId: res.data.category._id }))
+    //     .catch(console.error)
+    // }
+      .then(res => {
+        this.props.msgAlert({
+          heading: 'category Created Successfully',
+          message: messages.categoryCreatedSuccess,
+          variant: 'success'
+        })
+        return res
+      })
       .then(res => this.setState({ createdId: res.data.category._id }))
-      .catch(console.error)
+      .catch(res => this.props.msgAlert({
+        heading: 'category Create Failed',
+        message: messages.categoryCreatedFailure,
+        variant: 'danger'
+      }))
   }
 
   render () {

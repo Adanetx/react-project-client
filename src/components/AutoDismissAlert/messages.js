@@ -18,5 +18,13 @@ export default {
   commentEditSuccess: '',
   commentEditFailure: 'Only creator can edit this comment',
   commentDeleteSuccess: 'Comment on more posts!',
-  commentDeleteFailure: 'Only creator can delete this comment'
+  commentDeleteFailure: 'Only creator can delete this comment',
+  catgoryCreatedSuccess: '👍',
+  categoryCreatedFailure: 'Please fill out all forms 😩',
+  categoryEditSuccess: '',
+  categoryEditFailure: 'Only creator can edit this category',
+  categoryIndexFailure: 'Oops... Try again',
+  categoryDeleteSuccess: 'Start a new category! 📝',
+  categoryDeleteFailure: 'Only creator can delete this category'
+
 }

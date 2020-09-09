@@ -49,7 +49,7 @@ class Category extends Component {
     // if we do not have category (category is null)
     //
     console.log(category)
-    // if (!category) {
+    if (!category) {
       return <p>Loading...</p>
     }
 
