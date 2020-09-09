@@ -6,6 +6,8 @@ const authenticatedOptions = (
   <Fragment>
     <Nav.Link href='#posts'> Posts </Nav.Link>
     <Nav.Link href='#posts-create'> Create Post </Nav.Link>
+    <Nav.Link href='#categories'> categoyies </Nav.Link>
+    <Nav.Link href='#categories-create'> Create category </Nav.Link>
     <Nav.Link href="#change-password">Change Password</Nav.Link>
     <Nav.Link href="#sign-out">Sign Out</Nav.Link>
   </Fragment>

@@ -12,6 +12,12 @@ import Posts from '../routes/Posts'
 import PostCreate from '../routes/PostCreate'
 import Post from '../routes/Post'
 import PostEdit from '../routes/PostEdit'
+
+import Categories from '../routes/Categories'
+import CategoryCreate from '../routes/CategoryCreate'
+import Category from '../routes/Category'
+import CategoryEdit from '../routes/CategoryEdit'
+
 import CommentCreate from '../routes/CommentCreate'
 import CommentEdit from '../routes/CommentEdit'
 import { withRouter } from 'react-router'
@@ -32,6 +38,7 @@ class App extends Component {
   clearUser = () => this.setState({ user: null })
 
   msgAlert = ({ heading, message, variant }) => {
+    // console.log('in messge alert')
     this.setState({ msgAlerts: [...this.state.msgAlerts, { heading, message, variant }] })
   }
 
@@ -74,7 +81,19 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/posts/:id/edit' render={ (props) => (
             <PostEdit {...props} user={user} msgAlert={this.msgAlert} setUpdated={this.setUpdated}/>
           )}/>
-          <AuthenticatedRoute user={user} exact path='/posts/:id/comments' render={ (props) => (
+          <AuthenticatedRoute user={user} exact path='/categories' render={ () => (
+            <Categories user={user} />
+          )}/>
+          <AuthenticatedRoute user={user} exact path='/categories-create' render={ () => (
+            <CategoryCreate user={user} msgAlert={this.msgAlert} setCreatedId={this.setCreatedId}/>
+          )}/>
+          <AuthenticatedRoute user={user} exact path='/categories/:id' render={ (props) => (
+            <Category {...props} user={user} msgAlert={this.msgAlert} setDeleted={this.setDeleted}/>
+          )}/>
+          <AuthenticatedRoute user={user} exact path='/categories/:id/edit' render={ (props) => (
+            <CategoryEdit {...props} user={user} msgAlert={this.msgAlert} setUpdated={this.setUpdated}/>
+          )}/>
+          <AuthenticatedRoute user= {user} exact path='/posts/:id/comments' render={ (props) => (
             <CommentCreate {...props} user={user} msgAlert={this.msgAlert} setCreated={this.setCreated}/>
           )}/>
           <AuthenticatedRoute user={user} exact path='/posts/:id/comments/:commentid/edit' render={ (props) => (
