@@ -38,7 +38,7 @@ class App extends Component {
   clearUser = () => this.setState({ user: null })
 
   msgAlert = ({ heading, message, variant }) => {
-    console.log('in messge alert')
+    // console.log('in messge alert')
     this.setState({ msgAlerts: [...this.state.msgAlerts, { heading, message, variant }] })
   }
 
@@ -85,13 +85,13 @@ class App extends Component {
             <Categories user={user} />
           )}/>
           <AuthenticatedRoute user={user} exact path='/categories-create' render={ () => (
-            <CategoryCreate user={user}/>
+            <CategoryCreate user={user} msgAlert={this.msgAlert} setCreatedId={this.setCreatedId}/>
           )}/>
           <AuthenticatedRoute user={user} exact path='/categories/:id' render={ (props) => (
-            <Category {...props} user={user}/>
+            <Category {...props} user={user} msgAlert={this.msgAlert} setDeleted={this.setDeleted}/>
           )}/>
           <AuthenticatedRoute user={user} exact path='/categories/:id/edit' render={ (props) => (
-            <CategoryEdit {...props} user={user}/>
+            <CategoryEdit {...props} user={user} msgAlert={this.msgAlert} setUpdated={this.setUpdated}/>
           )}/>
           <AuthenticatedRoute user= {user} exact path='/posts/:id/comments' render={ (props) => (
             <CommentCreate {...props} user={user} msgAlert={this.msgAlert} setCreated={this.setCreated}/>

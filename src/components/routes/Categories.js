@@ -27,9 +27,7 @@ class Categories extends Component {
         'Authorization': `Token token=${this.props.user.token}`
       }
     })
-    //     .then(res => this.setState({ categories: res.data.categories }))
-    //     .catch(console.error)
-    // }
+
       .then(res => this.setState({ categories: res.data.categories }))
     // .then(res => console.log(res))
       .catch(res => this.props.msgAlert({

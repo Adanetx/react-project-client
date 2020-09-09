@@ -4,6 +4,7 @@ import OutlineButton from '../shared/OutlineButton.js'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
 import { withRouter } from 'react-router'
+import messages from '../AutoDismissAlert/messages'
 
 class Category extends Component {
   constructor (props) {
@@ -40,7 +41,15 @@ class Category extends Component {
       }
     })
       // update their `deleted` state to be `true`
+    //     .then(() => this.setState({ deleted: true }))
+    //     .catch(console.error)
+      // }
       .then(() => this.setState({ deleted: true }))
+      .then(res => this.props.msgAlert({
+        heading: 'category Deleted Successfully',
+        message: messages.categoryDeleteSuccess,
+        variant: 'success'
+      }))
       .catch(console.error)
   }
 
@@ -48,7 +57,7 @@ class Category extends Component {
     const { category, deleted } = this.state
     // if we do not have category (category is null)
     //
-    console.log(category)
+    // console.log(category)
     if (!category) {
       return <p>Loading...</p>
     }
@@ -61,16 +70,21 @@ class Category extends Component {
         state: { message: 'Deleted post successfully' }
       }} />
     }
+    const owner = (this.props.user._id === this.state.category.owner)
     return (
       <div className='long'>
         <h3>Category:</h3>
         <div className='category'>
           <h4>{category.name}</h4>
           <p>{category.description}</p>
-          <Link to={`/categories/${this.props.match.params.id}/edit`}>
-            <OutlineButton variant="outline-info" size="size">Edit</OutlineButton>
-          </Link>
-          <OutlineButton variant= "outline-danger" size="sm" onClick={this.destroyCategory}>Delete Category</OutlineButton>
+          {owner ? (
+            <React.Fragment>
+              <Link to={`/categories/${this.props.match.params.id}/edit`}>
+                <OutlineButton variant="outline-info" size="size">Edit</OutlineButton>
+              </Link>
+              <OutlineButton variant= "outline-danger" size="sm" onClick={this.destroyCategory}>Delete Category</OutlineButton>
+            </React.Fragment>)
+            : ' ' }
         </div>
       </div>
     )
