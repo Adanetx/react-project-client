@@ -12,6 +12,12 @@ import Posts from '../routes/Posts'
 import PostCreate from '../routes/PostCreate'
 import Post from '../routes/Post'
 import PostEdit from '../routes/PostEdit'
+
+import Categories from '../routes/Categories'
+import CategoryCreate from '../routes/CategoryCreate'
+import Category from '../routes/Category'
+import CategoryEdit from '../routes/CategoryEdit'
+
 import CommentCreate from '../routes/CommentCreate'
 import CommentEdit from '../routes/CommentEdit'
 import { withRouter } from 'react-router'
@@ -74,6 +80,18 @@ class App extends Component {
           )}/>
           <AuthenticatedRoute user={user} exact path='/posts/:id/edit' render={ (props) => (
             <PostEdit {...props} user={user}/>
+          )}/>
+          <AuthenticatedRoute user={user} exact path='/categories' render={ () => (
+            <Categories user={user} />
+          )}/>
+          <AuthenticatedRoute user={user} exact path='/categories-create' render={ () => (
+            <CategoryCreate user={user}/>
+          )}/>
+          <AuthenticatedRoute user={user} exact path='/categories/:id' render={ (props) => (
+            <Category {...props} user={user}/>
+          )}/>
+          <AuthenticatedRoute user={user} exact path='/categories/:id/edit' render={ (props) => (
+            <CategoryEdit {...props} user={user}/>
           )}/>
           <AuthenticatedRoute user= {user} exact path='/posts/:id/comments' render={ (props) => (
             <CommentCreate {...props} user={user} msgAlert={this.msgAlert} setCreated={this.setCreated}/>

@@ -3,60 +3,52 @@ import { Link } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
 import { withRouter } from 'react-router'
-import messages from '../AutoDismissAlert/messages'
 
 // This will be our Books Index component (show all books)
-class Posts extends Component {
+class Categories extends Component {
   constructor (props) {
     super(props)
 
     // setup our initial state
     this.state = {
       // we have zero books, until our API request has finished
-      posts: []
+      categories: []
     }
   }
 
   // this is called whenever our component is created and inserted
   // into the DOM (first appears)
   componentDidMount () {
-    // make a GET request for all of the books
     axios({
-      url: `${apiUrl}/posts`,
+      url: `${apiUrl}/categories`,
       method: 'GET',
       headers: {
         'Authorization': `Token token=${this.props.user.token}`
       }
     })
-      .then(res => this.setState({ posts: res.data.posts }))
-      // .then(res => console.log(res))
-      .catch(res => this.props.msgAlert({
-        heading: 'Post Index Failed',
-        message: messages.postIndexFailure,
-        variant: 'danger'
-      }))
-      // .catch(console.error)
+      .then(res => this.setState({ categories: res.data.categories }))
+      .catch(console.error)
   }
 
   render () {
-    const posts = null
-    if (this.state.posts) {
-      const posts = this.state.posts.map(post => (
-        <div key={post._id} className='posts'>
-          <Link to={`/posts/${post._id}`}>
-            {post.title}
+    const categories = null
+    if (this.state.categories) {
+      const categories = this.state.categories.map(category => (
+        <div key={category._id} className='categories'>
+          <Link to={`/categories/${category._id}`}>
+            {category.name}
           </Link>
         </div>
       ))
-      return posts
+      return categories
     }
     return (
       <div className='long'>
-        <h1>Posts</h1>
-        {posts}
+        <h1>Categories</h1>
+        {categories}
       </div>
     )
   }
 }
 
-export default withRouter(Posts)
+export default withRouter(Categories)

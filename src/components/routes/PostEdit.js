@@ -4,6 +4,7 @@ import PostForm from '../shared/PostForm'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
 import { withRouter } from 'react-router'
+import messages from '../AutoDismissAlert/messages'
 
 class PostEdit extends Component {
   constructor (props) {
@@ -19,7 +20,12 @@ class PostEdit extends Component {
     }
   }
   componentDidMount () {
-    axios(`${apiUrl}/posts/${this.props.match.params.id}`)
+    axios(`${apiUrl}/posts/${this.props.match.params.id}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${this.props.user.token}`
+      }
+    })
       .then(res => this.setState({ post: res.data.post }))
       .catch(console.error)
   }
@@ -46,7 +52,16 @@ class PostEdit extends Component {
       data: { post: this.state.post }
     })
       .then(res => this.setState({ updated: true }))
-      .catch(console.error)
+      .then(res => this.props.msgAlert({
+        heading: 'Post Edited Successfully',
+        message: messages.postEditedSuccess,
+        variant: 'success'
+      }))
+      .catch(() => this.props.msgAlert({
+        heading: 'Post Edit Failed',
+        message: messages.postEditFailure,
+        variant: 'danger'
+      }))
   }
 
   render () {

@@ -6,5 +6,17 @@ export default {
   signOutSuccess: 'Come back soon!',
   changePasswordSuccess: 'Password changed successfully!',
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
-  commentCreateSuccess: '👍'
+  postCreatedSuccess: '👍',
+  postCreatedFailure: 'Please fill out all forms 😩',
+  postEditSuccess: '',
+  postEditFailure: 'Only creator can edit this post',
+  postIndexFailure: 'Oops... Try again',
+  postDeleteSuccess: 'Start a new post! 📝',
+  postDeleteFailure: 'Only creator can delete this post',
+  commentCreateSuccess: '👍',
+  commentCreateFailure: 'Please fill out form 😩',
+  commentEditSuccess: '',
+  commentEditFailure: 'Only creator can edit this comment',
+  commentDeleteSuccess: 'Comment on more posts!',
+  commentDeleteFailure: 'Only creator can delete this comment'
 }

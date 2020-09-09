@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import CommentForm from '../shared/CommentForm'
@@ -47,7 +48,11 @@ class CommentCreate extends Component {
         variant: 'success'
       }))
       .then(res => this.setState({ created: true }))
-      .catch(console.error)
+      .catch(res => this.props.msgAlert({
+        heading: 'Comment Created Failed',
+        message: messages.commentCreateFailure,
+        variant: 'danger'
+      }))
   }
 
   render () {
