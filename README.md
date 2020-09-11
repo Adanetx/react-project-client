@@ -4,9 +4,10 @@ This application allows signed in users to post text and images of various topic
 
 ## Important Links
 
-- [Deployed Client](https://reactions2code.github.io/react-project-client/)
-- [Api Repo](https://github.com/reactions2code/react-project-api)
-- [Deployed API](https://git.heroku.com/salty-cove-83012.git)
+- [Deployed Client](https://adanetx.github.io/react-project-client/)
+- [Api Repo](https://github.com/Adanetx/react-project-api)
+- [Deployed API](https://git.heroku.com/obscure-depths-42422.git)
+- [API Repo](https://github.com/Adanetx/react-project-api)
 - [Gantt Chart](https://docs.google.com/spreadsheets/d/1hUHYbxF8i37bEgrGfgN9qWebLXFGVB-AdIgRZn4mn1o/edit?usp=sharing)
 
 ## Planning Story
@@ -28,12 +29,17 @@ Entity Relationship Diagrams, along with wireframes, allowed us to get a better 
 - As a signed in user, I would like to comment on other users' posts on the message board.
 - As a signed in user, I would like to edit my comment on other users' posts on the message board.
 - As a signed in user, I would like to delete my comment on other users' posts on the message board.'
+- as a user I must able to add new category
+- as a user I must see user's posted categories resource
+- as a user I must delete my own category resource
+- as a user I must able to update my own category resource
 
 ### Strech Goal(s)
 
 - Allow users to comment on comments.
 - Allow users to create categories or topics and add posts to specific category or topic message boards
 - Allow users to add tags to a post
+- Allow to create another resource with in this resource create, delete, update, ...
 
 ### Technologies Used
 
@@ -43,7 +49,10 @@ Entity Relationship Diagrams, along with wireframes, allowed us to get a better 
 - React
 - React Router
 - html
--
+- scss
+- API
+- reac Router
+- axios
 
 ### Catalog of Routes for post
 
