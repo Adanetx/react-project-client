@@ -79,7 +79,8 @@ class CategoryEdit extends Component {
     // when the user hits submit to finish editing the book
     if (updated) {
       // redirect to the show page (route)
-      return <Redirect to={`/categories/${this.props.match.params.id}`} />
+      // return <Redirect to={`/categories/${this.props.match.params.id}`} />
+      return <Redirect to={'/categories/'}/>
     }
 
     return (
@@ -88,6 +89,7 @@ class CategoryEdit extends Component {
           category ={category}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
+          // cancelPath={`/categories/${this.props.match.params.id}`}
           cancelPath={`/categories/${this.props.match.params.id}`}
         />
       </div>

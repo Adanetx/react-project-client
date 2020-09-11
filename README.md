@@ -42,9 +42,10 @@ Entity Relationship Diagrams, along with wireframes, allowed us to get a better 
 - Javascript
 - React
 - React Router
-- PHP
+- html
+-
 
-### Catalog of Routes
+### Catalog of Routes for post
 
 | Verb   | URI Pattern            |
 |--------|------------------------|
@@ -56,6 +57,18 @@ Entity Relationship Diagrams, along with wireframes, allowed us to get a better 
 | POST     | `/posts`|
 | PATCH    | `/posts/:id`|
 | DELETE  | `/posts/:id`|
+
+### Catalog of Routes for category
+
+Verb   | URI Pattern            |
+|--------|------------------------|
+|   |   |
+| GET      | `/categories`        |
+| GET      | `/category/:id`|
+| POST     | `/categories`|
+| PATCH    | `/categories/:id`|
+| DELETE  | `/categories/:id`|
+
 
 
 
