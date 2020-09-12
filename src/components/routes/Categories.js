@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
 import { withRouter } from 'react-router'
-// import messages from '../AutoDismissAlert/messages'
+import messages from '../AutoDismissAlert/messages'
 
 // This will be our Books Index component (show all books)
 class Categories extends Component {
@@ -28,13 +28,18 @@ class Categories extends Component {
       }
     })
       .then(res => this.setState({ categories: res.data.categories }))
+      .then(res => this.props.msgAlert({
+        heading: 'categories listed Successfully',
+        message: messages.categoriesListedeSuccess,
+        variant: 'success'
+      }))
     // .then(res => console.log(res))
-      // .catch(res => this.props.msgAlert({
-      //   heading: 'category Index Failed',
-      //   message: messages.categoryIndexFailure,
-      //   variant: 'danger'
-      // }))
-      .catch(console.error)
+      .catch(res => this.props.msgAlert({
+        heading: 'category Index Failed',
+        message: messages.categoryIndexFailure,
+        variant: 'danger'
+      }))
+      // .catch(console.error)
   }
   render () {
     const categories = null

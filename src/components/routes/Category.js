@@ -66,8 +66,8 @@ class Category extends Component {
     if (deleted) {
       // redirect to the categories
       return <Redirect to={{
-        pathname: '/categories',
-        state: { message: 'Deleted post successfully' }
+        pathname: '/',
+        state: { message: 'Deleted categoty successfully' }
       }} />
     }
     const owner = (this.props.user._id === this.state.category.owner)

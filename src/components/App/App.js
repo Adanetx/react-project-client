@@ -82,7 +82,7 @@ class App extends Component {
             <PostEdit {...props} user={user} msgAlert={this.msgAlert} setUpdated={this.setUpdated}/>
           )}/>
           <AuthenticatedRoute user={user} exact path='/categories' render={ () => (
-            <Categories user={user} />
+            <Categories user={user} msgAlert={this.msgAlert} setCreatedId={this.setCreatedId}/>
           )}/>
           <AuthenticatedRoute user={user} exact path='/categories-create' render={ () => (
             <CategoryCreate user={user} msgAlert={this.msgAlert} setCreatedId={this.setCreatedId}/>

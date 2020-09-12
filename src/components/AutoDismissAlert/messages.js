@@ -25,6 +25,7 @@ export default {
   categoryEditFailure: 'Only creator can edit this category',
   categoryIndexFailure: 'Oops... Try again',
   categoryDeleteSuccess: 'Start a new category! 📝',
-  categoryDeleteFailure: 'Only creator can delete this category'
+  categoryDeleteFailure: 'Only creator can delete this category',
+  categoriesListedeSuccess: 'congratulation! 📝'
 
 }

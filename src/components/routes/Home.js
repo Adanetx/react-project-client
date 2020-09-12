@@ -4,7 +4,7 @@ class Home extends Component {
   render () {
     return (
       <div className='home'>
-        <h1>Please Sign In above <br/> to get posting!</h1>
+        <h1>well come to my <br/>message board App!</h1>
       </div>
     )
   }
